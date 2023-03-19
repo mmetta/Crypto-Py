@@ -30,7 +30,7 @@ class Py_Page_2(QWidget):
         self.label_despised.setAlignment(Qt.AlignCenter)
         self.label_despised.setStyleSheet('font: 10pt "Segoe UI"; color: #c3ccdf')
 
-        self.icon_bx = QPixmap('v3/GUI/images/icons/baixar.svg')
+        self.icon_bx = QPixmap('assets/icons/baixar.svg')
         self.btn_all = QPushButton()
         self.btn_all.setIcon(self.icon_bx)
         self.btn_all.setStyleSheet(btn_edit_style())

@@ -28,8 +28,8 @@ class Py_Page_3(QWidget):
         self.label_3.setMaximumWidth(500)
         self.label_3.setText('Aplicativo desenvolvido em Python3 QT PySide6 para\n' +
                              'acompanhar cotações de pares de Cryptomoedas.\n\n' +
-                             'As consultas são feitas na API2 (free) da Binance\n' +
-                             'e trazem informações de preço e variação % em 24h.\n\n' +
+                             'As consultas são feitas na API2 Binance e trazem\n' +
+                             'informações de preço e % de oscilação.\n\n' +
                              'Você pode atualizar as informações e adicionar ou\n' +
                              'remover pares da sua lista de acompanhamento.')
         self.label_3.setAlignment(Qt.AlignCenter)
