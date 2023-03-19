@@ -112,7 +112,7 @@ class PyPushButton(QPushButton):
     def draw_icon(self, qp, image, rect, color):
         # Format Path
         app_path = os.path.abspath(os.getcwd())
-        folder = "v3/GUI/images/icons"
+        folder = "assets/icons"
         path = os.path.join(app_path, folder)
         icon_path = os.path.normpath(os.path.join(path, image))
 

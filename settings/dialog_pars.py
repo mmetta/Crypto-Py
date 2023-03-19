@@ -3,7 +3,7 @@ import os
 
 
 app_path = os.path.abspath(os.getcwd())
-folder = "v3/assets"
+folder = "settings"
 path = os.path.join(app_path, folder)
 
 
