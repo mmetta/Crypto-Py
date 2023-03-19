@@ -2,14 +2,9 @@ from datetime import datetime
 
 import requests
 
-from v3.settings.dialog_pars import ler_json, escrever_json_all
+from settings.dialog_pars import ler_json, escrever_json_all
 
 prices = []
-# def cotacao_par(par):
-#     link = str('https://api2.binance.com/api/v3/ticker/24hr?symbol=' + par)
-#     req = requests.get(link)
-#     res = req.json()
-#     return res
 
 
 def consult_price(pesq):
@@ -47,25 +42,10 @@ def cotacao():
     return res
 
 
-# def monta(coin):
-#     return coin['bidPrice'], coin['priceChangePercent']
-
-
 def par(res, p):
     for coin in res:
         if coin['symbol'] == p:
             return p, coin['priceChangePercent'], coin['bidPrice']
-
-
-# def consulta_par():
-#     pares = ler_json()
-#     li = list()
-#     for par in pares:
-#         coin = cotacao(par)
-#         val = monta(coin)
-#         prt = f'{par}', f'{float(val[0]):.3f}', f'{float(val[1]):.2f}'
-#         li.append(prt)
-#     return li
 
 
 def consulta():
