@@ -48,6 +48,10 @@ class UiMainWindow(object):
             text='Editar lista',
             icon_path='list_edit.svg'
         )
+        self.btn_4 = PyPushButton(
+            text='Carteira',
+            icon_path='wallet.svg'
+        )
         self.btn_3 = PyPushButton(
             text='Atualizar',
             icon_path='reload.svg'
@@ -56,6 +60,7 @@ class UiMainWindow(object):
         self.left_menu_top_layout.addWidget(self.toggle_button)
         self.left_menu_top_layout.addWidget(self.btn_1)
         self.left_menu_top_layout.addWidget(self.btn_2)
+        self.left_menu_top_layout.addWidget(self.btn_4)
         self.left_menu_top_layout.addWidget(self.btn_3)
 
         self.bottom_spacer = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)

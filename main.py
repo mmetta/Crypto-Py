@@ -26,6 +26,9 @@ class MainWindow(QMainWindow):
         # Btn reload
         self.ui.btn_3.clicked.connect(self.list_reload)
 
+        # Btn wallet
+        self.ui.btn_4.clicked.connect(self.show_page_4)
+
         # Btn settings
         self.ui.btn_settings.clicked.connect(self.show_page_3)
 
@@ -56,6 +59,13 @@ class MainWindow(QMainWindow):
         self.ui.pages.setCurrentWidget(self.ui.ui_pages.page_2)
         self.ui.right_top_label.setText('|| EDITAR LISTA')
         self.ui.btn_2.set_active(True)
+
+    # Btn widgets function
+    def show_page_4(self):
+        self.reset_selection()
+        self.ui.pages.setCurrentWidget(self.ui.ui_pages.page_4)
+        self.ui.right_top_label.setText('|| CARTEIRA')
+        self.ui.btn_4.set_active(True)
 
     # Btn pase gettings
     def show_page_3(self):

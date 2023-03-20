@@ -6,11 +6,11 @@
 #
 # WARNING! All changes made in this file will be lost when recompiling UI file!
 # ##############################################################################
-
 from py_Core import *
 from gui.pages.page_01 import Py_Page_1
 from gui.pages.page_02 import Py_Page_2
 from gui.pages.page_03 import Py_Page_3
+from gui.pages.page_04 import Py_Page_4
 
 
 class Ui_StackedWidget(object):
@@ -27,6 +27,9 @@ class Ui_StackedWidget(object):
 
         self.page_3 = Py_Page_3()
         application_pages.addWidget(self.page_3)
+
+        self.page_4 = Py_Page_4()
+        application_pages.addWidget(self.page_4)
 
         QMetaObject.connectSlotsByName(application_pages)
     # setupUi
