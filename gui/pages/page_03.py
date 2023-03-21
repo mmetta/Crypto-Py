@@ -18,7 +18,7 @@ class Py_Page_3(QWidget):
         self.label_img.setPixmap(self.logo_img)
         self.label_img.setAlignment(Qt.AlignCenter)
 
-        self.label_title = QLabel('Crypto GUI QT')
+        self.label_title = QLabel('Crypto PY')
         self.label_title.setAlignment(Qt.AlignCenter)
         self.label_title.setStyleSheet('font: 700 16pt "Segoe UI"; color: #c3ccdf')
         self.label_title.setContentsMargins(0, 0, 0, 40)
@@ -26,12 +26,16 @@ class Py_Page_3(QWidget):
         self.label_3 = QLabel()
         self.label_3.setObjectName(u"label_3")
         self.label_3.setMaximumWidth(500)
-        self.label_3.setText('Aplicativo desenvolvido em Python3 QT PySide6 para\n' +
+        self.label_3.setText('Aplicativo desenvolvido em Python3 - PySide6 para\n' +
                              'acompanhar cotações de pares de Cryptomoedas.\n\n' +
                              'As consultas são feitas na API2 Binance e trazem\n' +
                              'informações de preço e % de oscilação.\n\n' +
                              'Você pode atualizar as informações e adicionar ou\n' +
-                             'remover pares da sua lista de acompanhamento.')
+                             'remover pares da sua lista de acompanhamento.\n\n' +
+                             'Na aba Carteira você pode anotar suas quantidades\n' +
+                             'de cada ativo e manter atualizado seu saldo sem a\n' +
+                             'necessidade de conectar-se a exchange, evitando assim\n'+
+                             'riscos desnecessários.')
         self.label_3.setAlignment(Qt.AlignCenter)
         self.label_3.setStyleSheet('font: 12pt "Segoe UI"; color: #c3ccdf')
         self.label_3.setContentsMargins(0, 0, 0, 40)

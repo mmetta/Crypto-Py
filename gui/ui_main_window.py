@@ -81,7 +81,7 @@ class UiMainWindow(object):
 
         self.left_menu_bottom_layout.addWidget(self.btn_settings)
 
-        self.left_menu_label_version = QLabel('v 0.0.3')
+        self.left_menu_label_version = QLabel('v 0.0.1')
         self.left_menu_label_version.setAlignment(Qt.AlignCenter)
         self.left_menu_label_version.setMinimumHeight(30)
         self.left_menu_label_version.setMaximumHeight(30)
