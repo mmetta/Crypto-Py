@@ -1,5 +1,5 @@
 from py_Core import *
-from settings.dialog_pars import ler_json, ler_json_all, delete_json, inserir_json
+from settings.lists_pars import ler_json, ler_json_all, delete_json, inserir_json
 from settings.estilos import scroll_bar_style, edit_line_style, cbx_style, btn_edit_style, list_style_extra
 from settings.req_binance import consult_price, lista_nova
 

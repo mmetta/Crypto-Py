@@ -42,6 +42,30 @@ def scroll_bar_style():
     return st
 
 
+def table_widget():
+    tw = """
+        QTableWidget {
+            selection-background-color: #0F0;
+            selection-color: #44475A;
+        }
+        QTableWidget QTableCornerButton::section {
+            background: #0F0;
+            border: 2px outset #0F0;
+        }
+    """
+    return tw
+
+
+def radio_button():
+    rb = """
+        QRadioButton::indicator:checked {
+            border-radius: 6px;
+            border: 3px solid #0f0;
+        }
+    """
+    return rb
+
+
 def edit_line_style():
     els = f"""
                 QLineEdit {{

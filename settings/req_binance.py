@@ -2,7 +2,7 @@ from datetime import datetime
 
 import requests
 
-from settings.dialog_pars import ler_json, escrever_json_all
+from settings.lists_pars import ler_json, escrever_json_all, ler_list_wallet, save_wallet
 
 prices = []
 
@@ -43,9 +43,23 @@ def cotacao():
 
 
 def par(res, p):
+    if res == 0:
+        res = prices
     for coin in res:
         if coin['symbol'] == p:
             return p, coin['priceChangePercent'], coin['bidPrice']
+
+
+def update_val(fiat):
+    li_par = []
+    li_mon = ler_list_wallet(fiat)
+    for item in li_mon:
+        val = par(prices, item[0])
+        sub = float(item[2]) * float(val[2])
+        up = [str(item[0]),  f'{float(val[2]):.6f}', str(item[2]),  f'{float(sub):.2f}']
+        li_par.append(up)
+    save_wallet(li_par, fiat)
+    return li_par
 
 
 def consulta():

@@ -45,6 +45,8 @@ class MainWindow(QMainWindow):
     # Atualizar a lista
     def list_reload(self):
         self.ui.ui_pages.page_1.atual()
+        self.ui.ui_pages.page_4.update_values()
+        self.ui.ui_pages.page_4.search_pars()
 
     # Btn home function
     def show_page_1(self):
