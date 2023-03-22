@@ -128,7 +128,7 @@ class UiMainWindow(object):
 
         self.left_bottom_babel = QLabel('Mario F. Metta')
         self.bottom_spacer = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        self.right_bottom_Label = QLabel('fev 2023')
+        self.right_bottom_Label = QLabel('mar 2023')
         self.right_bottom_Label.setStyleSheet('font: 700 9pt "Segoe UI"')
 
         self.bottom_bar_layout = QHBoxLayout(self.bottom_bar)
