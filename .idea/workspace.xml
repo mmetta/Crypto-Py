@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="011490e3-b046-4643-91c4-1abac3cb9f24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/atual_path.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/pages/page_02.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/pages/page_02.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/pages/page_03.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/pages/page_03.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/ui_pushbutton.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/ui_pushbutton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/BRL_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/BRL_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/BUSD_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/BUSD_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/USDT_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/USDT_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/all_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/all_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/lists_pars.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings/lists_pars.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/pars_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/pars_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/settings.json" afterDir="false" />
-    </list>
+    <list default="true" id="011490e3-b046-4643-91c4-1abac3cb9f24" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
