@@ -1,7 +1,14 @@
 import sys
 
+from pathlib import Path
+
+from atual_path import local_path
 from py_Core import *
 from gui.ui_main_window import UiMainWindow
+
+
+base_path = Path(local_path(), 'assets')
+print(base_path)
 
 
 class MainWindow(QMainWindow):
@@ -94,8 +101,10 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("assets/favicon.ico"))
-    pixmap = QPixmap('assets/splash.png')
+    path_icon = str(Path(base_path, 'favicon.ico'))
+    path_splash = str(Path(base_path, 'splash.png'))
+    app.setWindowIcon(QIcon(path_icon))
+    pixmap = QPixmap(path_splash)
     splash = QSplashScreen(pixmap)
     splash.show()
 
@@ -106,5 +115,4 @@ if __name__ == "__main__":
     window = MainWindow()
     window.show()
     splash.finish(window)
-    # app.exec()
     sys.exit(app.exec())

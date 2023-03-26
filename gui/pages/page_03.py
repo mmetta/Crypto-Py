@@ -1,4 +1,9 @@
+from pathlib import Path
+
+from atual_path import local_path
 from py_Core import *
+
+base_path = Path(local_path(), 'assets')
 
 
 class Py_Page_3(QWidget):
@@ -13,8 +18,10 @@ class Py_Page_3(QWidget):
         self.lay_wid_central = QVBoxLayout(self.wid_central)
         self.lay_wid_central.setAlignment(Qt.AlignCenter)
 
+        logo_icon = str(Path(base_path, 'favicon.png'))
+
         self.label_img = QLabel()
-        self.logo_img = QPixmap('assets/favicon.png')
+        self.logo_img = QPixmap(logo_icon)
         self.label_img.setPixmap(self.logo_img)
         self.label_img.setAlignment(Qt.AlignCenter)
 

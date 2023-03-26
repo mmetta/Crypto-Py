@@ -1,6 +1,9 @@
-import os
+from pathlib import Path
 
+from atual_path import local_path
 from py_Core import *
+
+base_path = Path(local_path(), 'assets/icons')
 
 
 class PyPushButton(QPushButton):
@@ -110,11 +113,8 @@ class PyPushButton(QPushButton):
         qp.end()
 
     def draw_icon(self, qp, image, rect, color):
-        # Format Path
-        app_path = os.path.abspath(os.getcwd())
-        folder = "assets/icons"
-        path = os.path.join(app_path, folder)
-        icon_path = os.path.normpath(os.path.join(path, image))
+
+        icon_path = str(Path(base_path, image))
 
         # Draw icon
         icon = QPixmap(icon_path)
