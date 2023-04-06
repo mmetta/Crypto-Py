@@ -1,3 +1,4 @@
+import os
 import sys
 
 from pathlib import Path
@@ -5,7 +6,14 @@ from pathlib import Path
 from atual_path import local_path
 from py_Core import *
 from gui.ui_main_window import UiMainWindow
+from settings.req_binance import data_e_hora
+from sqlite_data import create_db
 
+appData = os.getenv('APPDATA') + '\\CryptoPy'
+db_dir = os.path.isdir(appData)
+if not db_dir:
+    os.makedirs(os.path.join(os.environ['APPDATA'], 'CryptoPy'))
+    create_db()
 
 base_path = Path(local_path(), 'assets')
 print(base_path)
@@ -19,8 +27,6 @@ class MainWindow(QMainWindow):
 
         self.ui = UiMainWindow()
         self.ui.setup_ui(self)
-
-        self.tmp = QTimer()
 
         self.ui.toggle_button.clicked.connect(self.toggle_button)
 
@@ -51,7 +57,8 @@ class MainWindow(QMainWindow):
 
     # Atualizar a lista
     def list_reload(self):
-        self.ui.ui_pages.page_1.atual()
+        self.ui.ui_pages.page_1.list_crypto.atual()
+        self.ui.ui_pages.page_1.statusLabel.setText('Atualizado ' + data_e_hora())
         self.ui.ui_pages.page_4.update_values()
         self.ui.ui_pages.page_4.search_pars()
 
@@ -102,7 +109,7 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     path_icon = str(Path(base_path, 'favicon.ico'))
-    path_splash = str(Path(base_path, 'splash.png'))
+    path_splash = str(Path(base_path, 'splash-v2.png'))
     app.setWindowIcon(QIcon(path_icon))
     pixmap = QPixmap(path_splash)
     splash = QSplashScreen(pixmap)
