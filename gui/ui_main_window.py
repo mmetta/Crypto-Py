@@ -81,7 +81,7 @@ class UiMainWindow(object):
 
         self.left_menu_bottom_layout.addWidget(self.btn_settings)
 
-        self.left_menu_label_version = QLabel('v 0.0.1')
+        self.left_menu_label_version = QLabel('v 0.0.2')
         self.left_menu_label_version.setAlignment(Qt.AlignCenter)
         self.left_menu_label_version.setMinimumHeight(30)
         self.left_menu_label_version.setMaximumHeight(30)
@@ -128,7 +128,7 @@ class UiMainWindow(object):
 
         self.left_bottom_babel = QLabel('Mario F. Metta')
         self.bottom_spacer = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        self.right_bottom_Label = QLabel('mar 2023')
+        self.right_bottom_Label = QLabel('abr 2023')
         self.right_bottom_Label.setStyleSheet('font: 700 9pt "Segoe UI"')
 
         self.bottom_bar_layout = QHBoxLayout(self.bottom_bar)

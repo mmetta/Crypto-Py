@@ -45,12 +45,13 @@ def scroll_bar_style():
 def table_widget():
     tw = """
         QTableWidget {
-            selection-background-color: #0F0;
-            selection-color: #44475A;
+            selection-background-color: #24344a;
+            selection-border: 2px outset #24344a;
+            selection-color: #fff;
         }
         QTableWidget QTableCornerButton::section {
-            background: #0F0;
-            border: 2px outset #0F0;
+            background: #24344a;
+            border: 2px outset #24344a;
         }
     """
     return tw

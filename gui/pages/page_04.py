@@ -1,7 +1,7 @@
 from py_Core import *
 from settings.estilos import scroll_bar_style, btn_edit_style, edit_line_style, cbx_style, table_widget, radio_button
-from settings.lists_pars import ler_json, save_wallet, ler_settings, save_settings
-from settings.req_binance import update_val, par
+from settings.req_binance import update_wallet, par
+from sqlite_data import select_settings, select_all, update_settings, update_my_wallet, delete_wallet
 
 
 class Py_Page_4(QWidget):
@@ -16,9 +16,9 @@ class Py_Page_4(QWidget):
         self.lay_wid_central = QVBoxLayout(self.wid_central)
         self.lay_wid_central.setAlignment(Qt.AlignCenter)
 
-        self.obj_settings = ler_settings()
+        self.obj_settings = select_settings()
         self.fiat = self.obj_settings['fiat']
-        self.list_wallet = update_val(self.fiat)
+        self.list_wallet = update_wallet(self.fiat)
 
         # QTableWidget - crypto list in wallet
         self.wallet_table = QTableWidget()
@@ -104,6 +104,7 @@ class Py_Page_4(QWidget):
         self.qtd_edit.setPlaceholderText('Quant. em carteira')
         self.qtd_edit.setValidator(QDoubleValidator())
         self.qtd_edit.setAlignment(Qt.AlignCenter)
+        self.qtd_edit.textChanged.connect(self.remove_dot)
 
         self.btn_cls = QPushButton('Limpar')
         self.btn_cls.setFixedSize(QSize(75, 30))
@@ -133,9 +134,14 @@ class Py_Page_4(QWidget):
 
         self.verticalLayout_4.addWidget(self.wid_central)
 
+    def remove_dot(self):
+        if '.' in self.qtd_edit.text():
+            txt = self.qtd_edit.text().replace('.', ',')
+            self.qtd_edit.setText(txt)
+
     def search_pars(self):
         self.sel_par.clear()
-        pref = ler_json()
+        pref = select_all('par_list')
         n = len(self.fiat)
         n = n * -1
         monitored = []
@@ -150,14 +156,14 @@ class Py_Page_4(QWidget):
         self.sel_par.addItems(monitored)
 
     def update_values(self):
-        self.list_wallet = update_val(self.fiat)
+        self.list_wallet = update_wallet(self.fiat)
         self.popular_table()
 
     def on_fiat_clicked(self, button):
         self.fiat = button.text()
         obj = self.obj_settings
         obj['fiat'] = self.fiat
-        save_settings(obj)
+        update_settings(obj)
         pref_total = 'R$' if self.fiat == 'BRL' else 'US$'
         self.lbl_total.setText(pref_total)
         self.update_values()
@@ -204,11 +210,8 @@ class Py_Page_4(QWidget):
 
     def delete_par(self):
         d = self.wallet_table.currentRow()
-        items = []
-        for i, item in enumerate(self.list_wallet):
-            if i != d:
-                items.append(item)
-        save_wallet(items, self.fiat)
+        id_par = self.wallet_table.item(d, 0)
+        delete_wallet(id_par.text(), self.fiat)
         self.update_values()
         self.search_pars()
         self.clear_all()
@@ -217,7 +220,8 @@ class Py_Page_4(QWidget):
         i = self.wallet_table.currentRow()
         item = self.list_wallet[i]
         self.par_edit.setText(item[0])
-        self.qtd_edit.setText(item[2])
+        quant = str(item[2]).replace('.', ',')
+        self.qtd_edit.setText(str(quant))
         self.btn_edit.setText('ALTERAR')
         self.btn_del.setEnabled(True)
         self.sel_par.setCurrentIndex(-1)
@@ -234,7 +238,7 @@ class Py_Page_4(QWidget):
             else:
                 i = self.wallet_table.currentRow()
                 items[i] = item
-            save_wallet(items, self.fiat)
+            update_my_wallet(items, self.fiat)
             self.update_values()
             self.search_pars()
             self.clear_all()

@@ -2,9 +2,9 @@ from pathlib import Path
 
 from atual_path import local_path
 from py_Core import *
-from settings.lists_pars import ler_json, ler_json_all, delete_json, inserir_json
-from settings.estilos import scroll_bar_style, edit_line_style, cbx_style, btn_edit_style, list_style_extra
-from settings.req_binance import consult_price, lista_nova
+from settings.estilos import btn_edit_style, scroll_bar_style, list_style_extra, cbx_style, edit_line_style
+from settings.req_binance import lista_nova, consult_price
+from sqlite_data import select_all, delete_par_list, insert_par_list
 
 base_path = Path(local_path(), 'assets/icons')
 
@@ -17,9 +17,14 @@ class Py_Page_2(QWidget):
         self.verticalLayout_2 = QVBoxLayout(self)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
 
+        self.label_all = QLabel()
+        self.label_despised = QLabel()
+
         self.fazer = []
-        self.allpar = ler_json_all()
-        self.pares = ler_json()
+        self.allpar = select_all('all_list')
+        if len(self.allpar) <= 0:
+            self.nova_lista_all()
+        self.pares = select_all('par_list')
         self.font12 = QFont('Arial', 12)
 
         self.edit_widget = QWidget()
@@ -27,11 +32,9 @@ class Py_Page_2(QWidget):
         self.edit_widget.setMinimumSize(400, 360)
         self.edit_layout = QVBoxLayout(self.edit_widget)
 
-        self.label_all = QLabel()
         self.label_all.setText(f'Lista geral com {len(self.allpar)} pares de Cryptomoedas')
         self.label_all.setAlignment(Qt.AlignCenter)
         self.label_all.setStyleSheet('font: 11pt "Segoe UI"; color: #c3ccdf')
-        self.label_despised = QLabel()
         self.label_despised.setAlignment(Qt.AlignCenter)
         self.label_despised.setStyleSheet('font: 10pt "Segoe UI"; color: #c3ccdf')
 
@@ -113,7 +116,7 @@ class Py_Page_2(QWidget):
         self.bcls.setMaximumSize(30, 30)
         self.bcls.clicked.connect(self.limpar)
         self.lay_edit.addWidget(self.bcls)
-
+        
         self.cbx2.addItems(self.pares)
         self.cbx2.setCurrentIndex(-1)
         self.cbx2.activated.connect(self.current_text_via_index)
@@ -135,14 +138,14 @@ class Py_Page_2(QWidget):
 
     def nova_lista_all(self):
         desp = lista_nova()
-        self.allpar = ler_json_all()
+        self.allpar = select_all('all_list')
         self.label_all.setText(f'Lista geral com {len(self.allpar)} pares de Cryptomoedas')
         self.label_despised.setText(f'{desp} pares com valor 0 absoluto foram despresados.')
 
     def pop_model(self, items):
-        for i in items:
-            item = QStandardItem(i)
-            self.model.appendRow(item)
+        for item in items:
+            row = QStandardItem(item)
+            self.model.appendRow(row)
 
     def limpar(self):
         if self.btn0.text() == 'Inserir' and self.ledt.text() != '':
@@ -202,20 +205,19 @@ class Py_Page_2(QWidget):
             ctext = self.cbx2.itemText(index)
             self.btn0.setText('Deletar')
             self.lbl3.setText(f'Deletar: {ctext}')
-            self.fazer = ['Deletar', index]
+            self.fazer = ['Deletar', ctext]
             self.ledt.setText('')
 
     def atualiza_pares(self):
-        self.pares = ler_json()
+        self.pares = select_all('par_list')
         self.cbx2.clear()
         self.cbx2.addItems(self.pares)
 
     def salvar(self):
         if self.fazer:
-            print(self.fazer[0], self.fazer[1])
             if self.fazer[0] == 'Deletar':
-                delete_json(self.fazer[1])
+                delete_par_list(self.fazer[1])
             else:
-                inserir_json(self.fazer[1])
+                insert_par_list(self.fazer[1])
             self.atualiza_pares()
             self.limpar_tudo()
